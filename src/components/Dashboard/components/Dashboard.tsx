@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import Button from "../../../../shared/Button";
-import { ModalContent } from "../ModalContent";
-import { getUniversitiesDetails, getEducationDetails } from "../../../../actions";
-import { mainState, educationData } from "../../../../interfaces/type";
-import PopupModal from "../../../../shared/Modal";
-import { history } from "../../../../other/history";
-import "../../styles.css";
+import Button from "../../../shared/Button";
+import { getUniversitiesDetails, getEducationDetails } from "../../../actions";
+import { mainState, educationData } from "../../../interfaces/type";
+import PopupModal from "../../../shared/Modal";
+import { history } from "../../../other/history";
+import "../styles.css";
+import ModalContent from "./ModalContent";
 
 const mapStateToProps = (state: mainState) => ({
     universities: state.educations.universities,

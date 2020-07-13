@@ -2,11 +2,11 @@ import * as React from "react";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Input from "../../../../shared/Input";
-import Label from "../../../../shared/Label";
-import Button from "../../../../shared/Button";
-import { Select } from "../AsyncSelect";
-import { educationData } from "../../../../interfaces/type";
+import Input from "../../../shared/Input";
+import Label from "../../../shared/Label";
+import Button from "../../../shared/Button";
+import { educationData } from "../../../interfaces/type";
+import Select from "./AsyncSelect";
 
 interface IProps {
     universities: any;

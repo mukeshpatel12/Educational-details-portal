@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AsyncSelect from 'react-select/async';
-import { params } from "../../../../interfaces/type";
+import { params } from "../../../interfaces/type";
 
 type Props = {
     name: string;
