@@ -29,9 +29,13 @@ const Home: React.FC<Props> = (props: Props) => {
     }
 
     return (
-        <div className="flex-column align-items-center">
-            <Input name="username" placeholder="Please Enter your Name" value={name} onChange={(e: any) => { setName(e.target.value) }} />
-            <Button className="mt-3" onClick={login}>Login</Button>
+        <div className="login-input">
+            <div>
+                <Input name="username" maxLength={20} placeholder="Please Enter your Name" value={name} onChange={(e: any) => { setName(e.target.value) }} />
+            </div>
+            <div>
+                <Button className="mt-3" onClick={login} disabled={name.length === 0}>Login</Button>
+            </div>
         </div>
     );
 };

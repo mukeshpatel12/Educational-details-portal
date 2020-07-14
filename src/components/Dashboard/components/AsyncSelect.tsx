@@ -6,55 +6,40 @@ type Props = {
     name: string;
     options: any;
     onSelect: (key: string, value: string) => void;
-    getOptions: (value: string) => void;
+    getOptionsValue: (value: string) => void;
 }
 
-type State = {
-    inputValue: string,
-};
+const AsyncSelectBox: React.FC<Props> = (props: Props) => {
+    const [selectValue, setSelectValue] = useState<string>("");
+    const [value, setValue] = useState<params>({ getVal: "", getLabel: "" });
 
-const Select: React.FC<Props> = (props: Props, state: State) => {
-    const [inputValue, setInputValue] = useState<string>("");
-    const [selectedValue, setSelectedValue] = useState<params>({ value: "", label: "" });
-
-    const filtersOptions = () => {
-        return (props.options && props.options.length > 0)
-            ? props.options.map((option: any) => {
-                return ({ value: option.name, label: option.name });
-            })
-            : [];
-    }
-
-    const loadOptions = (inputValue: string, callback: any) => {
+    const getAsyncOptions = (inputValue: string, callbck: any) => {
         setTimeout(() => {
-            callback(filtersOptions());
+            callbck(filtersOptions());
         }, 1000);
     };
 
-    const handleInputChange = (newValue: string) => {
-        const inputValue = newValue.replace(/\W/g, '');
-        setInputValue(inputValue);
-        props.getOptions(inputValue);
-        return inputValue;
+    const filtersOptions = () => {
+        return (props.options && props.options.length > 0)
+            ? props.options.map((option: any) => { return ({ value: option.name, label: option.name }); }) : [];
+    }
+
+    const onChangeInput = (val: any) => {
+        setSelectValue(val.replace(/\W/g, ''));
+        props.getOptionsValue(val.replace(/\W/g, ''));
+        return val.replace(/\W/g, '');
     };
 
-    const handleSelect = (selected: any) => {
-        setSelectedValue(selected);
+    const onChangeSelect = (selected: any) => {
+        setValue(selected);
         props.onSelect(props.name, selected.value);
     }
 
     return (
-        <div className="select">
-            <AsyncSelect
-                cacheOptions
-                loadOptions={loadOptions}
-                defaultOptions
-                value={selectedValue}
-                onChange={handleSelect}
-                onInputChange={handleInputChange}
-            />
+        <div className="async">
+            <AsyncSelect cacheOptions loadOptions={getAsyncOptions} value={value} onChange={onChangeSelect} onInputChange={onChangeInput} defaultOptions />
         </div>
     );
 };
 
-export default Select;
+export default AsyncSelectBox;

@@ -15,8 +15,8 @@ export interface universitiesData {
 }
 
 export interface params {
-    value: string,
-    label: string
+    getVal: string,
+    getLabel: string
 }
 
 export interface users {
